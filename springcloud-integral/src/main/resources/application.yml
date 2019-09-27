@@ -1,0 +1,27 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8520/eureka/
+  instance:
+        # 告诉服务端，如果我5s之内没有给你发心跳，将我踢出掉。
+        lease-expiration-duration-in-seconds: 5
+        # 每间隔3s，向服务端发送一次心跳，证明自己依然”存活“
+        lease-renewal-interval-in-seconds: 3
+server:
+  port: 8524
+spring:
+  application:
+    name: springcloud-integral
+  boot:
+      admin:
+        client:
+          url: http://localhost:8526
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+
